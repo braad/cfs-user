@@ -4,6 +4,7 @@ import User from './../Types/user';
 
 interface CreateUserComponentProps {
   onBack: () => void;
+  onSuccess: (name: string) => void;
 }
 
 // Keep track of any errors on the user fields
@@ -15,7 +16,7 @@ interface FormErrors {
   pincode?: string;
 }
 
-export const CreateUserComponent: React.FC<CreateUserComponentProps> = ({ onBack }) => {
+const CreateUserComponent = ({onBack, onSuccess}:CreateUserComponentProps) => {
 
   // Manage form fields state
   const [id, setId] = useState<number>(0);
@@ -73,7 +74,6 @@ export const CreateUserComponent: React.FC<CreateUserComponentProps> = ({ onBack
     return Object.keys(currentErrors).length === 0;
   };
 
-
   // Handle form submission
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,7 +83,9 @@ export const CreateUserComponent: React.FC<CreateUserComponentProps> = ({ onBack
     
     // Validate the input fields
     const isValid = validateForm();
-    if (!isValid) return; 
+    if (!isValid) {
+      return
+    }; 
 
     setIsSubmitting(true);
 
@@ -104,19 +106,13 @@ export const CreateUserComponent: React.FC<CreateUserComponentProps> = ({ onBack
         throw new Error(`Failed to create user. Status: ${response.status}`);
       }
 
-      const result: Response = await response.json();
-      console.log('Successfully created user:', result);
+      //   const result: Response = await response.json();
+      //   console.log('Successfully created user:', result);
 
-      // todo: return to user list and display success toaster
-      
       setSuccess(true);
-
-      // Clear input fields
-      setName(''); 
-      setAge(''); 
-      setCity(''); 
-      setState(''); 
-      setPincode(''); 
+    
+      // Return to user list and display success toaster
+      onSuccess(name);
 
     } catch (err: any) {
       setApiError('An error occurred while creating the user.');
@@ -211,3 +207,5 @@ export const CreateUserComponent: React.FC<CreateUserComponentProps> = ({ onBack
     </div>
   );
 };
+
+export default CreateUserComponent;

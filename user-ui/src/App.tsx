@@ -3,15 +3,21 @@ import React, {useState} from 'react';
 // import './App.css';
 import UserMenu from './Components/UserMenu';
 import UserList from './Components/UserList';
-import { CreateUserComponent } from './Components/CreateUser';
+import CreateUserComponent from './Components/CreateUser';
 
 type CurrentPage = 'list' | 'create';
 
 function App() {
+
   const [currentPage, setCurrentPage] = useState<CurrentPage>('list');
 
-  return (
+  const handleCreateUserSuccess = (userName: string) => {
+    console.log('created success ', userName);
+    setCurrentPage('list');
+    // display success toaster
+  }
 
+  return (
     <div style={{ padding: '20px' }}>
       {currentPage === 'list' ? (
         <div>
@@ -21,7 +27,10 @@ function App() {
           <UserList />
         </div>
       ) : (
-        <CreateUserComponent onBack={() => setCurrentPage('list')} />
+        <CreateUserComponent 
+          onBack={() => setCurrentPage('list')} 
+          onSuccess={handleCreateUserSuccess}
+        />
       )}
     </div>
   );

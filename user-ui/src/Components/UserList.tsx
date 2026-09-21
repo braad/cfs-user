@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import User from '../Types/user';
 
-
-export default function UserList() {
+const UserList = () => {
   
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -35,7 +34,7 @@ export default function UserList() {
         
         // Update users state
         setUsers(data);
-        
+
       } catch (err: any) {
         // Ignore the error if the request was intentionally aborted
           // setError("Something went wrong when retrieving the list of users.");
@@ -80,3 +79,5 @@ export default function UserList() {
     </div>
   );
 }
+
+export default UserList;
