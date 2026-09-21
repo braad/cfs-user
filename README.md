@@ -23,7 +23,6 @@ ui
     - move web api requests from tsx files to seperate module
     - move inline style to css file and improve look and feel
 api  
-    - move database from in-memory to SQLite
     - test parameters passed to web api (methods passed an id are failing)
     - test cases
 

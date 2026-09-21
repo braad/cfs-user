@@ -1,17 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
-// using UserApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// todo: Update db context when SQLite db is created
-builder.Services.AddDbContext<UserContext>(opt => opt.UseInMemoryDatabase("UserList"));
+// SQLite database
+var connectionString = builder.Configuration.GetConnectionString("cfsuser") ?? "Data Source=./data/app.db";
+builder.Services.AddSqlite<UserContext>(connectionString);
 
 // Allow cross origin request in localhost dev environment
 builder.Services.AddCors(options => {
