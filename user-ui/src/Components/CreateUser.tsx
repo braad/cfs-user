@@ -123,7 +123,6 @@ const CreateUserComponent = ({onBack, onSuccess}:CreateUserComponentProps) => {
 
   return (
     <div style={{ maxWidth: '400px', margin: '20px auto' }}>
-      <button onClick={onBack} style={{ marginBottom: '20px' }}>Return to User list</button>
       
       <h2>Create New User</h2>
 

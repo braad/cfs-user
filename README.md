@@ -18,8 +18,7 @@
 
 ### ToDo:
 ui  
-    - add a navigation bar
-    - after adding a new user return to the user list and display a success toaster
+    - after adding a new user and returning to the user list display a success toaster
     - move web api requests from tsx files to seperate module
     - move inline style to css file and improve look and feel
 api  

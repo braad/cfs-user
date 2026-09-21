@@ -7,7 +7,7 @@ import CreateUserComponent from './Components/CreateUser';
 
 type CurrentPage = 'list' | 'create';
 
-function App() {
+const App = () => {
 
   const [currentPage, setCurrentPage] = useState<CurrentPage>('list');
 
@@ -19,13 +19,11 @@ function App() {
 
   return (
     <div style={{ padding: '20px' }}>
+
+      <UserMenu activeMenu={currentPage} onSelectMenu={setCurrentPage} />
+
       {currentPage === 'list' ? (
-        <div>
-          <button onClick={() => setCurrentPage('create')} style={{ float: 'right' }}>
-            + Create New User
-          </button>
           <UserList />
-        </div>
       ) : (
         <CreateUserComponent 
           onBack={() => setCurrentPage('list')} 
