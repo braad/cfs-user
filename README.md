@@ -18,11 +18,11 @@
 
 ### ToDo:
 ui  
-    - after adding a new user and returning to the user list display a success toaster
     - move web api requests from tsx files to seperate module
     - move inline style to css file and improve look and feel
+    - test cases
 api  
-    - test parameters passed to web api (methods passed an id are failing)
+    - test parameters passed to web api (methods passed an id are failingin Swagger)
     - test cases
 
 ### Development notes:

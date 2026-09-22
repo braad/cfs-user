@@ -37,7 +37,6 @@ const UserList = () => {
 
       } catch (err: any) {
         // Ignore the error if the request was intentionally aborted
-          // setError("Something went wrong when retrieving the list of users.");
         if (err.name !== "AbortError") {
           setError(err.message || "Something went wrong");
         }
@@ -48,7 +47,7 @@ const UserList = () => {
 
     fetchUsers();
 
-    // 4. Cleanup function to abort fetch if component unmounts before completion
+    // Cleanup, abort fetch if component unmounts before completion
     return () => {
       controller.abort();
     };
@@ -58,9 +57,9 @@ const UserList = () => {
   if (loading) return <p>Loading users...</p>;
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
-  // Display list of users in a crude table
+  // Display list of users in a table
   return (
-    <div>
+    <div style={{ maxWidth: '400px', margin: '20px auto' }}>
       <h2>User List</h2>
 
         <table>

@@ -106,9 +106,6 @@ const CreateUserComponent = ({onBack, onSuccess}:CreateUserComponentProps) => {
         throw new Error(`Failed to create user. Status: ${response.status}`);
       }
 
-      //   const result: Response = await response.json();
-      //   console.log('Successfully created user:', result);
-
       setSuccess(true);
     
       // Return to user list and display success toaster
